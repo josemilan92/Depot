@@ -1,0 +1,43 @@
+D, [2017-07-06T18:00:08.517706 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2017-07-06T18:00:09.050366 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2017-07-06T18:00:09.050366 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `carts` CASCADE[0m
+D, [2017-07-06T18:00:09.235276 #7500] DEBUG -- :   [1m[35m (184.9ms)[0m  [1m[35mCREATE TABLE `carts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.235276 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `line_items` CASCADE[0m
+D, [2017-07-06T18:00:09.435154 #7500] DEBUG -- :   [1m[35m (184.3ms)[0m  [1m[35mCREATE TABLE `line_items` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `product_id` int, `cart_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `quantity` int DEFAULT 1, `price` decimal, `order_id` int,  INDEX `index_line_items_on_cart_id`  (`cart_id`),  INDEX `index_line_items_on_product_id`  (`product_id`)) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.435154 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `names` CASCADE[0m
+D, [2017-07-06T18:00:09.535441 #7500] DEBUG -- :   [1m[35m (100.3ms)[0m  [1m[35mCREATE TABLE `names` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `addres` text, `pay_tipe` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.551065 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `orders` CASCADE[0m
+D, [2017-07-06T18:00:09.651345 #7500] DEBUG -- :   [1m[35m (100.3ms)[0m  [1m[35mCREATE TABLE `orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `address` text, `email` varchar(255), `pay_type` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.651345 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `products` CASCADE[0m
+D, [2017-07-06T18:00:09.767250 #7500] DEBUG -- :   [1m[35m (115.9ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `decription` text, `image_url` varchar(255), `price` decimal(8,2), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.767250 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+D, [2017-07-06T18:00:09.882742 #7500] DEBUG -- :   [1m[35m (99.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `password_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:09.983026 #7500] DEBUG -- :   [1m[35m (100.3ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:10.220479 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2017-07-06T18:00:10.236105 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20170703011009)[0m
+D, [2017-07-06T18:00:10.236105 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20170630221712),
+(20170702011804),
+(20170702012108),
+(20170702082526),
+(20170702083229),
+(20170702184630),
+(20170702200415),
+(20170702201136),
+(20170702201415);
+
+[0m
+D, [2017-07-06T18:00:10.367633 #7500] DEBUG -- :   [1m[35m (100.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+D, [2017-07-06T18:00:10.383261 #7500] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-07-06T18:00:10.421038 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+D, [2017-07-06T18:00:10.421038 #7500] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'production', '2017-07-06 23:00:10', '2017-07-06 23:00:10')[0m
+D, [2017-07-06T18:00:10.421038 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-07-06T18:00:10.436659 #7500] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2017-07-06T18:00:10.467916 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+D, [2017-07-06T18:00:10.467916 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
+D, [2017-07-06T18:00:10.483540 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2017-07-06T18:00:10.483540 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2017-07-06T18:00:10.652847 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+D, [2017-07-06T18:00:10.668472 #7500] DEBUG -- :   [1m[36mProduct Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Seven Mssdijsdnasn' LIMIT 1[0m
+D, [2017-07-06T18:00:10.668472 #7500] DEBUG -- :   [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO `products` (`title`, `decription`, `image_url`, `price`, `created_at`, `updated_at`) VALUES ('Seven Mssdijsdnasn', '<p>\n      <em>Native Apps, Multiple Platforms</em>\n      Answer the question “Can we build this for ALL the devices?” with a\n      resounding YES. This book will help you get there with a real-world\n      introduction to seven platforms, whether you’re new to mobile or an\n      experienced developer needing to expand your options. Plus, you’ll find\n      out which cross-platform solution makes the most sense for your needs.\n      </p>', 'kata.gif', 26.0, '2017-07-06 23:00:10', '2017-07-06 23:00:10')[0m
+D, [2017-07-06T18:00:10.684097 #7500] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[35mCOMMIT[0m
